@@ -1,0 +1,15 @@
+Here is a simplified version of my [piano simulator]: http://www.cnblogs.com/atyuwen/archive/2012/11/25/piano8k.html
+
+![screenshot](https://github.com/atyuwen/piano_syn/raw/master/piano.png)
+
+All piano tone synthesis stuff are removed, instead you must write the sound generator yourself by editing bin/syn.cpp. Here is an example:
+
+<pre><code>
+float v = 0.3 * sin(0.5 * w * t) * exp(-20 * t);
+v += 0.8 * sin(w * t) * exp(-30 * t);
+v += 2 * sin(2 * w * t) * exp(-4 * t);
+v += 1.2 * sin(3 * w * t) * exp(-4 * t);
+return v;
+</code></pre>
+
+Also note when editing bin/syn.cpp, the piano simulator will detect your modification automatically and regenerate all notes. So you don't have to restart the simulator to see the changes.
